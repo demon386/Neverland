@@ -3,4 +3,4 @@ Neverland is a static blog generator written in Clojure, with the intention of w
 
 I'm relatively new to Clojure and Web programming, so this work is *very primitive*.
 
-[My personal Blog](http://www.mtong.me) is genereated with it.
+[http://www.mtong.me](My personal Blog) is genereated with it.
