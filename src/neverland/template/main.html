@@ -2,20 +2,106 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Titlee</title>
-    <!-- Bootstrap -->
-    <link href="http://www.mtong.me/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="http://www.mtong.me/mycss.css" rel="stylesheet" />
-    <link rel="alternate" type="application/rss+xml" title="M. Tong's Neverland" href="http://www.mtong.me/rss.xml" />
+      <title>Titlee</title>
+      <!-- Bootstrap -->
+      <link href="http://www.mtong.me/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+      <link href="http://www.mtong.me/org.css" rel="stylesheet" />
+      <link href="http://www.mtong.me/mycss.css" rel="stylesheet" />
+      <link rel="alternate" type="application/rss+xml" title="M. Tong's Neverland" href="http://www.mtong.me/rss.xml" />
+      <script type="text/javascript">
+        <!--/*--><![CDATA[/*><!--*/
+        function CodeHighlightOn(elem, id)
+        {
+        var target = document.getElementById(id);
+        if(null != target) {
+        elem.cacheClassElem = elem.className;
+        elem.cacheClassTarget = target.className;
+        target.className = "code-highlighted";
+        elem.className   = "code-highlighted";
+        }
+        }
+        function CodeHighlightOff(elem, id)
+        {
+        var target = document.getElementById(id);
+        if(elem.cacheClassElem)
+        elem.className = elem.cacheClassElem;
+        if(elem.cacheClassTarget)
+        target.className = elem.cacheClassTarget;
+        }
+        /*]]>*///-->
+      </script>
+      <script type="text/javascript">
+        <!--/*--><![CDATA[/*><!--*/
+        function CodeHighlightOn(elem, id)
+        {
+        var target = document.getElementById(id);
+        if(null != target) {
+        elem.cacheClassElem = elem.className;
+        elem.cacheClassTarget = target.className;
+        target.className = "code-highlighted";
+        elem.className   = "code-highlighted";
+        }
+        }
+        function CodeHighlightOff(elem, id)
+        {
+        var target = document.getElementById(id);
+        if(elem.cacheClassElem)
+        elem.className = elem.cacheClassElem;
+        if(elem.cacheClassTarget)
+        target.className = elem.cacheClassTarget;
+        }
+        /*]]>*///-->
+      </script>
+      <script type="text/javascript" src="http://orgmode.org/mathjax/MathJax.js">
+        <!--/*--><![CDATA[/*><!--*/
+        MathJax.Hub.Config({
+        // Only one of the two following lines, depending on user settings
+        // First allows browser-native MathML display, second forces HTML/CSS
+        //  config: ["MMLorHTML.js"], jax: ["input/TeX"],
+        jax: ["input/TeX", "output/HTML-CSS"],
+        extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js",
+        "TeX/noUndefined.js"],
+        tex2jax: {
+        inlineMath: [ ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"], ["\\begin{displaymath}","\\end{displaymath}"] ],
+        skipTags: ["script","noscript","style","textarea","pre","code"],
+        ignoreClass: "tex2jax_ignore",
+        processEscapes: false,
+        processEnvironments: true,
+        preview: "TeX"
+        },
+        showProcessingMessages: true,
+        displayAlign: "center",
+        displayIndent: "2em",
+
+        "HTML-CSS": {
+        scale: 100,
+        availableFonts: ["STIX","TeX"],
+        preferredFont: "TeX",
+        webFont: "TeX",
+        imageFont: "TeX",
+        showMathMenu: true,
+        },
+        MMLorHTML: {
+        prefer: {
+        MSIE:    "MML",
+        Firefox: "MML",
+        Opera:   "HTML",
+        other:   "HTML"
+        }
+        }
+        });
+        /*]]>*///-->
+      </script>
 
     </head>
     <body>
       <div class="navbar">
         <div class="navbar-inner">
           <a class="brand" href="http://www.mtong.me">M.Tong's Neverland</a>
-          <ul class="nav">
-            <li class="active"><a href="http://www.mtong.me">Blog</a></li>
-          </ul>
+          <!-- <ul class="nav"> -->
+          <!--   <li class="active"><a href="http://www.mtong.me">Blog</a></li> -->
+          <!-- </ul> -->
         </div>
       </div>
 

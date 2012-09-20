@@ -3,7 +3,7 @@
             [clojure.data.xml :as xml]
             [neverland.pager :as pager])
   (:use [neverland.render :only [to-str]]
-        [clojure.data.xml :only [element]]
+        [clojure.data.xml :only [element cdata]]
         [net.cgrand.enlive-html :only [emit* text]]))
 
 (def site-root "http://www.mtong.me/")
@@ -14,7 +14,7 @@
                   (element :item {}
                            (element :title {} (:content (:title post)))
                            (element :link {} (.concat site-root (:link post)))
-                           (element :description [] (text (:content post)))))))
+                           (element :description {} (cdata (to-str (:content (:content post)))))))))
 
 (defn rss [postrecords]
   (let [rss-content (xml/indent-str (element :rss {:version "2.0"}
