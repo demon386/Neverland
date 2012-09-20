@@ -14,5 +14,5 @@
 (defn -main [& args]
   (when-let [postrecords (map post/to-postrecord-from-file
                               (all-orghtml-files))]
-    ;(render/render postrecords)
+    (render/render postrecords)
     (rss postrecords)))

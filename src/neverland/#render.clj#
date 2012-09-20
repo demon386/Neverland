@@ -6,7 +6,7 @@
             [neverland.io :as io]
             [neverland.pager :as pager]
             [clojure.string])
-  (:use [net.cgrand.enlive-html :only [emit* text]]))
+  (:use [net.cgrand.enlive-html :only [emit*]]))
 
 (def page-posts-num 3)
 (def recent-posts-num 5)

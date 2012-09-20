@@ -2,7 +2,8 @@
   (:require [neverland.io :as io]
             [clojure.data.xml :as xml])
   (:use [neverland.render :only [to-str]]
-        [clojure.data.xml :only [element]]))
+        [clojure.data.xml :only [element]]
+        [net.cgrand.enlive-html :only [emit* text]]))
 
 (def site-root "http://www.mtong.me/")
 (def html-root "/Users/tongmuchenxuan/projects/neverland/html/")
@@ -12,7 +13,7 @@
                   (element :item {}
                            (element :title {} (:content (:title post)))
                            (element :link {} (.concat site-root (:link post)))
-                           (element :description [] (to-str (:content post)))))))
+                           (element :description [] (text (:content post)))))))
 
 (defn rss [postrecords]
   (let [rss-content (xml/indent-str (element :rss {:version "2.0"}
