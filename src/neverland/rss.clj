@@ -1,6 +1,7 @@
 (ns neverland.rss
   (:require [neverland.io :as io]
-            [clojure.data.xml :as xml])
+            [clojure.data.xml :as xml]
+            [neverland.pager :as pager])
   (:use [neverland.render :only [to-str]]
         [clojure.data.xml :only [element]]
         [net.cgrand.enlive-html :only [emit* text]]))
@@ -21,5 +22,6 @@
                                                     (element :title {} "M. Tong's Neverland")
                                                     (element :link {} "http://www.mtong.me")
                                                     (element :description {} "Learning, Thinking, Programming.")
-                                                    (generate-items postrecords))))]
+                                                    (generate-items (pager/sort-posts
+                                                                     postrecords)))))]
     (io/save-to-file (.concat html-root "rss.xml") rss-content)))

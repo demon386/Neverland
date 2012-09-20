@@ -29,7 +29,7 @@
 (defsnippet post "neverland/template/post.html" post-sel
   [ctxt]
   [:h5.post-date] (content (:date ctxt))
-  [:div.post] (content (:content ctxt)))
+  [:div.post] (content (:content (:content ctxt))))
 
 (def widgets-sel [:#widgets])
 
