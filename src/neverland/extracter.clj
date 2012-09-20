@@ -11,4 +11,6 @@
 
 (defextract extract-date [:p.date])
 
+(defextract extract-title [:title])
+
 (defextract extract-content [:div#content])

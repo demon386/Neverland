@@ -14,3 +14,7 @@
 
 (defn get-filename [path]
   (last (split path (re-pattern "/"))))
+
+(defn save-to-file [path content]
+  (with-open [wtr (writer path)]
+    (.write wtr content)))
