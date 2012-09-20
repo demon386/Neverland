@@ -4,10 +4,12 @@
 (ns neverland.render
   (:require [neverland.base :as base]
             [neverland.io :as io]
-            [neverland.pager :as pager])
-  (:use [net.cgrand.enlive-html :only [emit*]]))
+            [neverland.pager :as pager]
+            [clojure.string])
+  (:use [net.cgrand.enlive-html :only [emit* text]]))
 
 (def page-posts-num 3)
+(def recent-posts-num 5)
 
 (def html-root "/Users/tongmuchenxuan/projects/neverland/html/")
 
@@ -16,12 +18,10 @@
   (-> x (.replace "&amp;" "&") (.replace "&lt;" "<") (.replace "&gt;" ">" )))
 
 (defn to-str [nodes]
-  (reverse-xml-str (apply str (emit* nodes))))
+  (text nodes))
 
 (defn recent-widget-render [postrecords]
-  (println (take 5
-                 (pager/sort-posts postrecords)))
-  (base/recent-widget (take 5
+  (base/recent-widget (take recent-posts-num
                             (pager/sort-posts postrecords))))
 
 (defn widgets-render [postrecords]

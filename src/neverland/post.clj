@@ -5,12 +5,12 @@
 (defrecord PostRecord [date title content link])
 
 (defn filename-to-link [filename]
-  (-> filename
-      (split (re-pattern "/"))
-      (last)
-      (split (re-pattern "\\."))
-      (first)
-      (.concat ".html")))
+  (.concat "posts/"  (-> filename
+                         (split (re-pattern "/"))
+                         (last)
+                         (split (re-pattern "\\."))
+                         (first)
+                         (.concat ".html"))))
 
 (defn to-postrecord-from-file [filename]
   ;; Right now the extracter for HTML exported by Org mode is used.
