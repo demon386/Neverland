@@ -14,7 +14,7 @@
                   (element :item {}
                            (element :title {} (:title post))
                            (element :link {} (.concat site-root (:link post)))
-                           (element :description {} (cdata (to-str (:content (:content-node post)))))))))
+                           (element :description {} (cdata (to-str (emit* (:content (:content-node post))))))))))
 
 (defn rss [postrecords]
   (let [rss-content (xml/indent-str (element :rss {:version "2.0"}
