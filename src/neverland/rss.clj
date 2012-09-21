@@ -6,12 +6,8 @@
         [clojure.data.xml :only [element cdata]]
         [net.cgrand.enlive-html :only [emit* text remove-class]]))
 
-(def site-root "http://www.mtong.me/")
+(def site-root "http://www.mtong.me")
 (def html-root "/Users/tongmuchenxuan/projects/neverland/html/")
-
-(defn remove-title-from-content [content]
-  (remove #(= (:attrs %) {:class "title"})
-          (rest content)))
 
 (defn generate-items [postrecords]
   (apply vector (for [post postrecords]
@@ -20,8 +16,6 @@
                            (element :link {} (.concat site-root (:link post)))
                            (element :description {} (cdata (-> post
                                                                :content-node
-                                                               :content
-                                                               remove-title-from-content
                                                                emit*
                                                                to-str)))))))
 

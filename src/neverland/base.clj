@@ -35,7 +35,9 @@
                                                                   :date-hour-minute)
                                                                  #"[a-zA-Z]"
                                                                  " ")))
-  [:div.post] (content (:content (:content-node ctxt))))
+  [:.title] (do-> (content (:title ctxt))
+                  (set-attr :href (:link ctxt)))
+  [:.post-content] (substitute (:content-node ctxt)))
 
 (def widgets-sel [:#widgets])
 
