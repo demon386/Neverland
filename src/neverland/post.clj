@@ -6,7 +6,7 @@
 (defrecord PostRecord [date title content-node link])
 
 (defn filename-to-link [filename]
-  (.concat "posts/"  (-> filename
+  (.concat "/posts/"  (-> filename
                          (split (re-pattern "/"))
                          (last)
                          (split (re-pattern "\\."))

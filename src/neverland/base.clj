@@ -1,7 +1,7 @@
 ;;; Base skeleton for rendering
 (ns neverland.base
   (:use [net.cgrand.enlive-html
-         :only [deftemplate defsnippet content substitute
+         :only [deftemplate defsnippet content substitute html-content
                 first-child nth-of-type do-> set-attr]]
         [clj-time.local]
         [clj-time.format]))

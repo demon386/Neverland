@@ -13,12 +13,8 @@
 
 (def html-root "/Users/tongmuchenxuan/projects/neverland/html/")
 
-(defn reverse-xml-str [x]
-  "Reverse the escaped char."
-  (-> x (.replace "&amp;" "&") (.replace "&lt;" "<") (.replace "&gt;" ">" )))
-
 (defn to-str [nodes]
-  (reverse-xml-str (apply str (emit* nodes))))
+  (apply str nodes))
 
 (defn recent-widget-render [postrecords]
   (base/recent-widget (take recent-posts-num
