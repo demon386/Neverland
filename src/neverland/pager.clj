@@ -1,6 +1,6 @@
 (ns neverland.pager
-  (use [clj-time.local]))
+  (:use [clj-time.local]))
 
 
 (defn sort-posts [postrecords]
-  (reverse (sort-by #(to-local-date-time (first (:content (:date %)))) postrecords)))
+  (reverse (sort-by #(to-local-date-time (:date %)) postrecords)))

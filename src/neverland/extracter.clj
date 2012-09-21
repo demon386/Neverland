@@ -1,6 +1,7 @@
 (ns neverland.extracter
   (:require [net.cgrand.enlive-html :as html])
-  (:use [clojure.java.io :only (reader)]))
+  (:use [clojure.java.io :only (reader)]
+        [clojure.string :only [split]]))
 
 (defmacro defextract [name selector]
   `(defn ~name

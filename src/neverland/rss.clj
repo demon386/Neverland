@@ -12,9 +12,9 @@
 (defn generate-items [postrecords]
   (apply vector (for [post postrecords]
                   (element :item {}
-                           (element :title {} (:content (:title post)))
+                           (element :title {} (:title post))
                            (element :link {} (.concat site-root (:link post)))
-                           (element :description {} (cdata (to-str (:content (:content post)))))))))
+                           (element :description {} (cdata (to-str (:content (:content-node post)))))))))
 
 (defn rss [postrecords]
   (let [rss-content (xml/indent-str (element :rss {:version "2.0"}

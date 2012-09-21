@@ -46,7 +46,7 @@
   (let [widgets (widgets-render postrecords)]
     (doseq [post postrecords]
       (io/save-to-file (.concat html-root (:link post))
-                       (to-str (base/main {:title (:content (:title post))
+                       (to-str (base/main {:title (:title post)
                                            :main (base/post post)
                                            :widgets widgets}))))))
 

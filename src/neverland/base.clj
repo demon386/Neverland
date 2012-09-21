@@ -2,7 +2,9 @@
 (ns neverland.base
   (:use [net.cgrand.enlive-html
          :only [deftemplate defsnippet content substitute
-                first-child nth-of-type do-> set-attr]]))
+                first-child nth-of-type do-> set-attr]]
+        [clj-time.local]
+        [clj-time.format]))
 
 (def default-title "M. Tong's Neverland")
 
@@ -28,8 +30,12 @@
 
 (defsnippet post "neverland/template/post.html" post-sel
   [ctxt]
-  [:h5.post-date] (content (:date ctxt))
-  [:div.post] (content (:content (:content ctxt))))
+  [:h5.post-date] (content (str "Date: " (clojure.string/replace (format-local-time
+                                                                  (to-local-date-time (:date ctxt))
+                                                                  :date-hour-minute)
+                                                                 #"[a-zA-Z]"
+                                                                 " ")))
+  [:div.post] (content (:content (:content-node ctxt))))
 
 (def widgets-sel [:#widgets])
 
@@ -40,7 +46,7 @@
 (defsnippet recent-link "neverland/template/recent.html" [:#recent :> :ul :> :li]
   [{:keys [title link]}]
   [:a] (do->
-        (content (:content title))
+        (content title)
         (set-attr :href link)))
 
 (defsnippet recent-widget "neverland/template/recent.html" [[:#recent]]
