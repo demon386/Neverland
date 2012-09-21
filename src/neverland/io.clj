@@ -1,5 +1,6 @@
 (ns neverland.io
-  (:use [clojure.java.io]))
+  (:use [clojure.java.io]
+        [clojure.string :only [split]]))
 
 ;; This code is retrieved and modified from Rosetta
 ;; http://rosettacode.org/wiki/Walk_a_directory/Recursively
