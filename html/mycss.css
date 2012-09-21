@@ -1,0 +1,62 @@
+#footer {
+    text-align: center;
+    padding: 10px 0;
+    margin-top: 70px;
+    border-top: 1px solid #e5e5e5;
+    background-color: #f5f5f5;
+}
+#footer p {
+    margin-bottom: 0;
+    color: #777;
+}
+#footer-links {
+    margin: 10px 0;
+}
+#footer-links li {
+    display: inline;
+    margin-right: 10px;
+}
+div.container {
+    min-height: 700px;
+}
+
+#main h5.post-date:not(:first-child) {
+    margin-top: 60px;
+}
+
+.post {
+    border-top: 1px dashed;
+    border-bottom: 1px dashed;
+}
+
+div.mybrand {
+    font-family: courier, monospace;
+    width: 940px;
+    padding: 10px 20px 10px;
+    margin-right: auto;
+    margin-left: auto;
+    font-size: 20px;
+    font-weight: 200;
+    text-shadow: 0 1px 0 white;
+    display: block;
+}
+
+#widgets {
+    margin-top: 10px;
+}
+
+#widgets ul li {
+    margin-bottom: 5px;
+}
+
+#widgets ul li:first-child {
+    margin-top: 5px;
+}
+
+#widgets > li {
+    font-size: 100%;
+}
+
+.title {
+    margin-bottom: 16px;
+}
