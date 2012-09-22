@@ -17,7 +17,7 @@
                        (fs/list-dir "html"))]
     (dorun (map fs/delete-dir
                 (map #(str "html/" %) to-del)))
-    (fs/mkdir "html/posts")))
+    (map fs/mkdir ["html/posts"])))
 
 (defn all-orghtml-files []
   (neverland.io/walk "orghtml" #"[^.].*\.html"))
@@ -32,7 +32,11 @@
 (defn -main [& args]
   (when-let [postrecords (map post/to-postrecord-from-file
                               (all-orghtml-files))]
-    (init-dirs)
+
+    (let [post (nth postrecords 0)]
+      (println (:link post)
+               (:tags post)))                                  ;(init-dirs)
     (render/render postrecords)
-    (rss postrecords)
-    (publish-resources)))
+    ;(rss postrecords)
+    ;(publish-resources)
+    ))

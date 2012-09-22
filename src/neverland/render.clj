@@ -50,6 +50,24 @@
                                            :widgets widgets
                                            :comment (base/comment)}))))))
 
+(defn- assoc-keys-in-vector [m keys value]
+  (if (seq keys)
+    (reduce #(assoc %1 %2
+                    (conj (get %1 %2 []) value))
+            m keys)
+    m))
+
+(defn- categorize-tags [postrecords]
+  (reduce #(assoc-keys-in-vector %1 (:tags %2) %2) {} postrecords))
+
+(defn tags-render [postrecords]
+  (let [sorted-tags (categorize-tags postrecords)]
+    (io/save-to-file (str html-root "tags.html" )
+                     (to-str (base/main {:main (for [[key val] sorted-tags]
+                                                 (base/tag key val))
+                                         :widgets (widgets-render postrecords)})))))
+
 (defn render [postrecords]
   (posts-render postrecords)
-  (pages-render postrecords))
+  (pages-render postrecords)
+  (tags-render postrecords))

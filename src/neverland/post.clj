@@ -3,7 +3,7 @@
   (:use [clojure.string :only [split]]
         [clojure.string :only [split]]))
 
-(defrecord PostRecord [date title content-node link])
+(defrecord PostRecord [date title tags content-node link])
 
 (defn filename-to-link [filename]
   (.concat "/posts/"  (-> filename
@@ -18,5 +18,6 @@
   ;; It's easy to support different formats with different extracter
   (PostRecord. (extracter/extract-date filename)
                (extracter/extract-title filename)
+               (extracter/extract-tags filename)
                (extracter/extract-content filename)
                (filename-to-link filename)))

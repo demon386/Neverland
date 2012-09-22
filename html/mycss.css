@@ -20,7 +20,7 @@ div.container {
     min-height: 700px;
 }
 
-#main h5.post-date:not(:first-child) {
+.post-header:not(:first-child) {
     margin-top: 60px;
 }
 
@@ -78,4 +78,9 @@ ul.dsq-widget-list {
 
 li.dsq-widget-item {
     list-style-type: circle !important;
+    margin-top: 5px !important;
+    margin-bottom: 5px !important;
+}
+ul li.dsq-widget-item:first-child {
+    margin-top: 10px !important;
 }

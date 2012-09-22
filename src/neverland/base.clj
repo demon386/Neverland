@@ -1,8 +1,10 @@
 ;;; Base skeleton for rendering
 (ns neverland.base
+  (:require [clojure.data.xml :as xml]
+            [neverland.config :as config])
   (:use [net.cgrand.enlive-html
          :only [deftemplate defsnippet content substitute html-content
-                first-child nth-of-type do-> set-attr]]
+                first-child nth-of-type do-> set-attr append]]
         [clj-time.local]
         [clj-time.format]))
 
@@ -27,15 +29,27 @@
   [:#widgets] (maybe-substitute widgets)
   [:#comment] (maybe-substitute comment))
 
-(def post-sel #{[:div.post] [:h5.post-date]})
+(def post-sel #{[:div.post] [:.post-header] [:.post-tags]})
+
+(defn- a-with-link [href content]
+  (xml/element :a {:href href}
+               content))
+
+(defn- link-tags [tags]
+   (apply vector
+          (map #(a-with-link
+                  (str "/tags.html#" %)
+                  (config/tags-map %))
+               tags)))
 
 (defsnippet post "neverland/template/post.html" post-sel
   [ctxt]
-  [:h5.post-date] (content (str "Date: " (clojure.string/replace (format-local-time
+  [:.post-header :.post-date] (content (str "Date: " (clojure.string/replace (format-local-time
                                                                   (to-local-date-time (:date ctxt))
                                                                   :date-hour-minute)
                                                                  #"[a-zA-Z]"
                                                                  " ")))
+  [:.post-tags] (append (link-tags (:tags ctxt)))
   [:.title] (do-> (content (:title ctxt))
                   (set-attr :href (:link ctxt)))
   [:.post-content] (substitute (:content-node ctxt)))
@@ -61,3 +75,22 @@
 
 (defsnippet recentcomments-widget "neverland/template/recentcomments.html" [:#recentcomments]
   [])
+
+
+(defn- generate-item-in-tag-page [postrecord]
+  (a-with-link (:link postrecord) (str "["
+                                       (format-local-time
+                                        (to-local-date-time (:date postrecord))
+                                        :year-month-day)
+                                       "]  "
+                                       (:title postrecord))))
+
+(defsnippet tag-item "neverland/template/tag.html" [:.tagitem]
+  [postrecord]
+  [:.tagitem] (content (generate-item-in-tag-page postrecord)))
+
+(defsnippet tag "neverland/template/tag.html" [:.tagname]
+  [tagname postrecords]
+  [:.tagname] (do-> (set-attr :id tagname)
+                    (content (config/tags-map tagname))
+                    (append (map tag-item postrecords))))

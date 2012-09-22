@@ -16,7 +16,6 @@
 
 (defextract extract-content-node [:div#content])
 
-
 (def extract-title (comp first :content extract-title-node))
 
 (defn- get-pure-date-str [str]
@@ -31,3 +30,13 @@
 (def extract-content (comp remove-title-from-content
                            :content
                            extract-content-node))
+
+(defn extract-tags [filename]
+  (with-open [rdr (reader filename)]
+    (let [re-pattern #"meta name=\"keywords\" content=\"(.*)\""
+          meta-info (first (filter #(re-find re-pattern %)
+                                   (line-seq rdr)))
+          tags-str (nth (re-find re-pattern meta-info)
+                         1)]
+      (when (not (empty? tags-str))
+        (split tags-str #",")))))
