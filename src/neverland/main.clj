@@ -17,7 +17,7 @@
                        (fs/list-dir "html"))]
     (dorun (map fs/delete-dir
                 (map #(str "html/" %) to-del)))
-    (map fs/mkdir ["html/posts"])))
+    (dorun (map fs/mkdir ["html/posts"]))))
 
 (defn all-orghtml-files []
   (neverland.io/walk "orghtml" #"[^.].*\.html"))
