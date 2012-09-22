@@ -35,8 +35,8 @@
 
     (let [post (nth postrecords 0)]
       (println (:link post)
-               (:tags post)))                                  ;(init-dirs)
+               (:tags post)))
+    (init-dirs)
     (render/render postrecords)
-    ;(rss postrecords)
-    ;(publish-resources)
-    ))
+    (rss postrecords)
+    (publish-resources)))
