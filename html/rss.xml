@@ -5,34 +5,6 @@
     <link>http://www.mtong.me</link>
     <description>Learning, Thinking, Programming.</description>
     <item>
-      <title>机器学习之过拟合</title>
-      <link>http://www.mtong.me/posts/data_snooping.html</link>
-      <description><![CDATA[
-
-<p>嗯，先挖个坑。其实只是想先测试一下代码和数学公式。
-</p>
-
-
-<pre class="src src-python"><span style="color: #728a05;">import</span> numpy <span style="color: #728a05;">as</span> np
-<span style="color: #728a05;">from</span> pylab <span style="color: #728a05;">import</span> *
-
-plot(<span style="color: #5859b7;">range</span>(10), <span style="color: #5859b7;">range</span>(10))
-savefig(<span style="color: #259185;">"images/data.png"</span>)
-<span style="color: #728a05;">return</span> <span style="color: #259185;">"images/data.png"</span>
-</pre>
-
-
-<p>
-<img alt="images/data.png" align="center" width="400" src="images/data.png" />
-</p>
-
-
-\[
-x_1 + x_2 = x_3^2
-\]
-]]></description>
-    </item>
-    <item>
       <title>新的博客</title>
       <link>http://www.mtong.me/posts/preface.html</link>
       <description><![CDATA[

@@ -38,5 +38,6 @@
                                    (line-seq rdr)))
           tags-str (nth (re-find re-pattern meta-info)
                          1)]
-      (when (not (empty? tags-str))
-        (split tags-str #",")))))
+      (if (not (empty? tags-str))
+        (split tags-str #",")
+        ["none"]))))

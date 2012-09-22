@@ -1,3 +1,4 @@
 (ns neverland.config)
 
-(def tags-map {"ml" "Machine Learning"})
+(def tags-map {"ml" "Machine Learning",
+               "none" "Uncategorized"})

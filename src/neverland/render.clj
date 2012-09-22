@@ -42,7 +42,7 @@
   (single-page-render 0 postrecords))
 
 (defn posts-render [postrecords]
-  (let [widgets (widgets-render postrecords)]
+  (let [widgets (widgets-render (pager/sort-posts postrecords))]
     (doseq [post postrecords]
       (io/save-to-file (.concat html-root (:link post))
                        (to-str (base/main {:title (:title post)
@@ -53,7 +53,7 @@
 (defn- assoc-keys-in-vector [m keys value]
   (if (seq keys)
     (reduce #(assoc %1 %2
-                    (conj (get %1 %2 []) value))
+                    (conj (get %1 %2 ()) value))
             m keys)
     m))
 

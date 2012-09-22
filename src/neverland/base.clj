@@ -78,16 +78,18 @@
 
 
 (defn- generate-item-in-tag-page [postrecord]
-  (a-with-link (:link postrecord) (str "["
-                                       (format-local-time
-                                        (to-local-date-time (:date postrecord))
-                                        :year-month-day)
-                                       "]  "
-                                       (:title postrecord))))
+  (a-with-link (:link postrecord)
+    (:title postrecord)))
 
 (defsnippet tag-item "neverland/template/tag.html" [:.tagitem]
   [postrecord]
-  [:.tagitem] (content (generate-item-in-tag-page postrecord)))
+  [:.tagitem] (do-> (content (str "["
+                                  (format-local-time
+                                   (to-local-date-time (:date postrecord))
+                                   :year-month-day)
+                                  "]  "
+                                  ))
+                    (append (generate-item-in-tag-page postrecord))))
 
 (defsnippet tag "neverland/template/tag.html" [:.tagname]
   [tagname postrecords]
