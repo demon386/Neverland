@@ -20,8 +20,11 @@
   (base/recent-widget (take recent-posts-num
                             (pager/sort-posts postrecords))))
 
+(defn recentcomments-widget-render []
+  (base/recentcomments-widget))
+
 (defn widgets-render [postrecords]
-  (base/widgets [(recent-widget-render postrecords)]))
+  (base/widgets [(recent-widget-render postrecords) (recentcomments-widget-render)]))
 
 (defn single-page-render [n postrecords]
   (let [postrecords-in-page (nth (partition page-posts-num page-posts-num nil
@@ -44,7 +47,8 @@
       (io/save-to-file (.concat html-root (:link post))
                        (to-str (base/main {:title (:title post)
                                            :main (base/post post)
-                                           :widgets widgets}))))))
+                                           :widgets widgets
+                                           :comment (base/comment)}))))))
 
 (defn render [postrecords]
   (posts-render postrecords)

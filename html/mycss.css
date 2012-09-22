@@ -50,7 +50,7 @@ div.mybrand {
 }
 
 #widgets ul li:first-child {
-    margin-top: 5px;
+    margin-top: 10px;
 }
 
 #widgets > li {
@@ -60,4 +60,22 @@ div.mybrand {
 .title {
     margin-bottom: 16px;
     color: #333;
+}
+
+#comment {
+    margin-top: 40px;
+}
+
+#widgets li{
+    margin-bottom: 30px;
+
+}
+
+ul.dsq-widget-list {
+    padding: 0 !important;
+    margin: 0 0 10px 25px !important;
+}
+
+li.dsq-widget-item {
+    list-style-type: circle !important;
 }

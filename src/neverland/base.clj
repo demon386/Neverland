@@ -21,10 +21,11 @@
 ;; ============================================================
 
 (deftemplate main "neverland/template/main.html"
-  [{:keys [title main widgets]}]
+  [{:keys [title main widgets comment]}]
   [:title] (maybe-content title default-title)
   [:#main] (maybe-content main)
-  [:#widgets] (maybe-content widgets))
+  [:#widgets] (maybe-substitute widgets)
+  [:#comment] (maybe-substitute comment))
 
 (def post-sel #{[:div.post] [:h5.post-date]})
 
@@ -38,6 +39,9 @@
   [:.title] (do-> (content (:title ctxt))
                   (set-attr :href (:link ctxt)))
   [:.post-content] (substitute (:content-node ctxt)))
+
+(defsnippet comment "neverland/template/post.html" [:div#comment]
+  [])
 
 (def widgets-sel [:#widgets])
 
@@ -54,3 +58,6 @@
 (defsnippet recent-widget "neverland/template/recent.html" [[:#recent]]
   [data]
   [:ul] (content (map recent-link data)))
+
+(defsnippet recentcomments-widget "neverland/template/recentcomments.html" [:#recentcomments]
+  [])

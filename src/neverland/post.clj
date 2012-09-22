@@ -13,8 +13,6 @@
                          (first)
                          (.concat ".html"))))
 
-
-
 (defn to-postrecord-from-file [filename]
   ;; Right now the extracter for HTML exported by Org mode is used.
   ;; It's easy to support different formats with different extracter

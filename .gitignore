@@ -3,7 +3,5 @@ pom.xml
 /lib/
 /classes/
 .lein-deps-sum
-/html/
-/orghtml/
 #*
 .#*
