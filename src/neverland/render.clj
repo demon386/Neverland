@@ -48,7 +48,7 @@
                        (to-str (base/main {:title (:title post)
                                            :main (base/post post)
                                            :widgets widgets
-                                           :comment (base/comment)}))))))
+                                           :comment (base/post-comment)}))))))
 
 (defn- assoc-keys-in-vector [m keys value]
   (if (seq keys)

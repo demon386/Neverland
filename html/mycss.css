@@ -20,8 +20,11 @@ div.container {
     min-height: 700px;
 }
 
-.post-header:not(:first-child) {
-    margin-top: 60px;
+/* #main .post-date:not(:first-child) { */
+/*     margin-top: 60px; */
+/* } */
+.post-tags {
+    margin-bottom: 60px;
 }
 
 .post {
@@ -49,9 +52,12 @@ div.mybrand {
     margin-bottom: 5px;
 }
 
-#widgets ul li:first-child {
+#widgets > li > ul{
     margin-top: 10px;
 }
+/* #widgets ul li:first-child { */
+/*     margin-top: 10px; */
+/* } */
 
 #widgets > li {
     font-size: 100%;
@@ -62,10 +68,6 @@ div.mybrand {
     color: #333;
 }
 
-#comment {
-    margin-top: 40px;
-}
-
 #widgets li{
     margin-bottom: 30px;
 
@@ -73,7 +75,7 @@ div.mybrand {
 
 ul.dsq-widget-list {
     padding: 0 !important;
-    margin: 0 0 10px 25px !important;
+    margin: 10px 0 10px 25px !important;
 }
 
 li.dsq-widget-item {
@@ -81,6 +83,7 @@ li.dsq-widget-item {
     margin-top: 5px !important;
     margin-bottom: 5px !important;
 }
-ul li.dsq-widget-item:first-child {
-    margin-top: 10px !important;
-}
+
+/* ul li.dsq-widget-item:first-child { */
+/*     margin-top: 10px !important; */
+/* } */

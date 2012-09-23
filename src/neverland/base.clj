@@ -29,7 +29,7 @@
   [:#widgets] (maybe-substitute widgets)
   [:#comment] (maybe-substitute comment))
 
-(def post-sel #{[:div.post] [:.post-header] [:.post-tags]})
+(def post-sel #{[:div.post] [:.post-date] [:.post-tags]})
 
 (defn- a-with-link [href content]
   (xml/element :a {:href href}
@@ -44,17 +44,17 @@
 
 (defsnippet post "neverland/template/post.html" post-sel
   [ctxt]
-  [:.post-header :.post-date] (content (str "Date: " (clojure.string/replace (format-local-time
-                                                                  (to-local-date-time (:date ctxt))
-                                                                  :date-hour-minute)
-                                                                 #"[a-zA-Z]"
-                                                                 " ")))
+  [:.post-date] (content (str "Date: " (clojure.string/replace (format-local-time
+                                                                (to-local-date-time (:date ctxt))
+                                                                :date-hour-minute)
+                                                               #"[a-zA-Z]"
+                                                               " ")))
   [:.post-tags] (append (link-tags (:tags ctxt)))
   [:.title] (do-> (content (:title ctxt))
                   (set-attr :href (:link ctxt)))
   [:.post-content] (substitute (:content-node ctxt)))
 
-(defsnippet comment "neverland/template/post.html" [:div#comment]
+(defsnippet post-comment "neverland/template/post.html" [:div#comment]
   [])
 
 (def widgets-sel [:#widgets])
